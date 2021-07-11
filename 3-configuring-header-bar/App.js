@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text, Button, TextInput,Image } from "react-native";
+import { View, Text, Button, TextInput } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -15,29 +15,37 @@ function HomeScreen({ navigation, route }) {
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-            <Text style={{ margin: 10 }}>Home Screen 5 </Text>
+            <Text style={{ margin: 10 }}>Home Screen</Text>
     </View>
-  );
-}
-
-
-function LogoTitle() {
-  return (
-    <Image
-      style={{ width: 50, height: 50 }}
-      source={require('./assets/check-icon.png')}
-    />
   );
 }
 
 function StackScreen() {
   return (
     <Stack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }}
     >
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{ headerTitle: props => <LogoTitle {...props} /> }}
+        options={{
+          title: 'My home',
+          headerStyle: {
+            backgroundColor: '#f4511e',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
       />
     </Stack.Navigator>
   );
