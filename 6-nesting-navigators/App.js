@@ -6,13 +6,16 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
 
-const NestedStack = createStackNavigator();
-const RootStack = createDrawerNavigator();
+const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
-function EditPost(){
-  return <Text>
-      Edit Post
+
+function Home() {
+  return(
+    <Text>
+      Home
     </Text>
+  )
 }
 
 function Profile(){
@@ -31,27 +34,23 @@ function Settings(){
     )
 }
 
-
-function Home() {
+function Root() {
   return (
-    <NestedStack.Navigator>
-      <NestedStack.Screen name="Profile" component={Profile} />
-      <NestedStack.Screen name="Settings" component={Settings} />
-    </NestedStack.Navigator>
+    <Stack.Navigator>
+      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Settings" component={Settings} />
+    </Stack.Navigator>
   );
 }
+
 
 function App() {
   return (
     <NavigationContainer>
-      <RootStack.Navigator mode="modal">
-        <RootStack.Screen
-          name="Home"
-          component={Home}
-          options={{ headerShown: false }}
-        />
-        <RootStack.Screen name="EditPost" component={EditPost} />
-      </RootStack.Navigator>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="Root" component={Root} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
